@@ -39,7 +39,7 @@ public class ConsumerDemo {
         consumer.subscribe(Arrays.asList(topic));
 
         // poll for new data
-        while(true) {
+        while(true) { //Espera activa, ojito
             log.info("Polling");
 
             ConsumerRecords<String, String> records =

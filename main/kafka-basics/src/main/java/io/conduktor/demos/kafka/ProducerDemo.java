@@ -20,10 +20,11 @@ public class ProducerDemo {
         // create Producer Properties
         Properties properties = new Properties();
         properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName()); //Transform key into binaries
+        properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName()); //Transform values into binaries
 
         // create the Producer
+        //In the produce both key and values are strings
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
         // create a producer record
@@ -31,10 +32,11 @@ public class ProducerDemo {
             new ProducerRecord<>("demo_java", "hello world");
 
         // send the data - asynchronous
+        //Don't block the send, but be sure to close the producer after
         producer.send(producerRecord);
 
         // flush data - synchronous
-        producer.flush();
+        producer.flush(); //Wait until the producer has sent all the data
 
         // flush and close producer
         producer.close();

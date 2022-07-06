@@ -18,7 +18,6 @@ public class WikimediaChangeHandler implements EventHandler {
         this.topic = topic;
     }
 
-
     @Override
     public void onOpen() {
         // nothing here

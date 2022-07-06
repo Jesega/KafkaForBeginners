@@ -44,6 +44,7 @@ public class ProducerDemoKeys {
                         // the record was successfully sent
                         log.info("Received new metadata. \n" +
                                 "Topic: " + metadata.topic() + "\n" +
+                                //When using the same key, the messages go to the same partitions
                                 "Key: " + producerRecord.key() + "\n" +
                                 "Partition: " + metadata.partition() + "\n" +
                                 "Offset: " + metadata.offset() + "\n" +

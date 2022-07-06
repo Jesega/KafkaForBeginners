@@ -33,7 +33,6 @@ public class WikimediaChangesProducer {
         properties.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32 * 1024));
         properties.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
 
-
         // create the Producer
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
@@ -43,7 +42,6 @@ public class WikimediaChangesProducer {
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
         EventSource.Builder builder = new EventSource.Builder(eventHandler, URI.create(url));
         EventSource eventSource = builder.build();
-
 
         // start the producer in another thread
         eventSource.start();

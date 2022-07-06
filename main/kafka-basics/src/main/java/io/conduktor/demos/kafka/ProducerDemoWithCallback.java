@@ -50,6 +50,7 @@ public class ProducerDemoWithCallback {
                 }
             });
 
+            //This sleep is added to force the producer to send messages to different partititions
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
